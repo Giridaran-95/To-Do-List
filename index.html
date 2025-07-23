@@ -2,20 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-Do List</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>To‑Do List Enhanced</title>
+  <style>
+    body { font-family: Arial; padding: 2rem; background: #f0f0f3 }
+    .task { background: #fff; margin: .5rem 0; padding: .5rem; display: flex;
+      align-items: center; justify-content: space-between;
+      border-radius: 4px; animation: fadeIn 300ms ease-in; }
+    .fade-out { animation: fadeOut 300ms ease-in forwards; }
+    @keyframes fadeIn { from { opacity:0; transform: scale(0.9) } to { opacity:1; transform: none } }
+    @keyframes fadeOut { to { opacity:0; height:0; margin:0; padding:0 } }
+    .low { color: green } .medium { color: orange } .high { color: red }
+  </style>
 </head>
 <body>
-  <div class="todo-container">
-    <h1>📝 My To-Do List</h1>
-    <div class="input-section">
-      <input type="text" id="task-input" placeholder="Add a new task..." />
-      <button id="add-task-btn">Add</button>
-    </div>
-    <ul id="task-list"></ul>
+  <h1>To‑Do List</h1>
+  <div>
+    <input id="text" placeholder="Task description" />
+    <input type="date" id="dueDate" />
+    <select id="priority">
+      <option value="Low">Low</option>
+      <option value="Medium" selected>Medium</option>
+      <option value="High">High</option>
+    </select>
+    <button id="addBtn">Add Task</button>
+    <select id="filter">
+      <option value="all">All</option>
+      <option value="pending">Pending</option>
+      <option value="completed">Completed</option>
+    </select>
   </div>
 
-  <script src="script.js"></script>
+  <ul id="taskList"></ul>
+
+  <template id="taskTpl">
+    <li class="task">
+      <span>
+        <input type="checkbox" class="completeChk" />
+        <span class="desc"></span>
+        <small>(Due: <span class="due"></span>)</small>
+        <span class="priority"></span>
+      </span>
+      <span>
+        <button class="editBtn">Edit</button>
+        <button class="deleteBtn">Delete</button>
+      </span>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
 </body>
 </html>
