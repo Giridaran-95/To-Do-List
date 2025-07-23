@@ -3,43 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <title>To‑Do List Enhanced</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>To‑Do List</h1>
-  <div>
-    <input id="text" placeholder="Task description" />
-    <input type="date" id="dueDate" />
-    <select id="priority">
-      <option value="Low">Low</option>
-      <option value="Medium" selected>Medium</option>
-      <option value="High">High</option>
-    </select>
-    <button id="addBtn">Add Task</button>
-    <select id="filter">
+  <div class="app-container">
+    <h1>To‑Do List</h1>
+    <div class="form-controls">
+      <input id="text" placeholder="Task description" />
+      <input type="date" id="dueDate" />
+      <select id="priority">
+        <option value="Low">Low</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="High">High</option>
+      </select>
+      <button id="addBtn">Add Task</button>
+    </div>
+    <select id="filter" class="filter-select">
       <option value="all">All</option>
       <option value="pending">Pending</option>
       <option value="completed">Completed</option>
     </select>
+    <ul id="taskList"></ul>
+    <template id="taskTpl">
+      <li class="task">
+        <div class="left">
+          <input type="checkbox" class="completeChk" />
+          <span class="desc"></span>
+          <small>(Due: <span class="due"></span>)</small>
+          <span class="priority"></span>
+        </div>
+        <div class="right">
+          <button class="editBtn">Edit</button>
+          <button class="deleteBtn">Delete</button>
+        </div>
+      </li>
+    </template>
   </div>
-
-  <ul id="taskList"></ul>
-
-  <template id="taskTpl">
-    <li class="task">
-      <span>
-        <input type="checkbox" class="completeChk" />
-        <span class="desc"></span>
-        <small>(Due: <span class="due"></span>)</small>
-        <span class="priority"></span>
-      </span>
-      <span>
-        <button class="editBtn">Edit</button>
-        <button class="deleteBtn">Delete</button>
-      </span>
-    </li>
-  </template>
-
-  <script src="script.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
